@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1678835358 source:c:\users\diasb\onedrive\Área de trabalho\memoria cache\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
