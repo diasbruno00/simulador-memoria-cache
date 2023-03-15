@@ -75,7 +75,7 @@ int main()
                 {
                     int date = retornaDate(set0_date,Index);
 
-                    printf("\n Hit (set 0)\n");
+                    printf("\n HIT (set 0)\n");
                     printf("Date encontrado: %d \n\n",date);
                     contadorHit++;
                 }
@@ -184,15 +184,15 @@ void menu()
 
 }
 
-void inicializarSet(int *setV, int *setIndex, int *setTag, int *setDate)
+void inicializarSet(int *V, int *Index, int *Tag, int *Date)
 {
 
     for(int i = 0 ; i <tamanhoCache; i++)
     {
-        setIndex[i] = i;
-        setTag[i] = rand() % 750;
-        setV[i] = 1 ;
-        setDate[i] = rand() % 1000;
+        Index[i] = i;
+        Tag[i] = rand() % 750;
+        V[i] = 1 ;
+        Date[i] = rand() % 1000;
 
     }
 
