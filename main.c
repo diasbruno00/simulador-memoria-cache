@@ -6,7 +6,8 @@ int retornaDate(int *arrayDate, int posicao);
 int buscarPorIndex(int index, int *arrayIndex);
 int buscarPorTag(int tag, int *arrayTag, int index);
 void imprimirSet(int *setV, int *setIndex, int *setTag, int *setDate);
-void inicializarSet(int *setV, int *setIndex, int *setTag, int *setDate);
+void inicializarSet(int *setV, int *setTag, int *setDate);
+void iniciarIndex(int *index);
 void menu();
 
 int tamanhoCache = 256;
@@ -24,33 +25,32 @@ int main()
 
     int set1_V[tamanhoCache];
     int set1_tag[tamanhoCache];
-    int set1_index[tamanhoCache];
     int set1_date[tamanhoCache];
 
     int set2_V[tamanhoCache];
     int set2_tag[tamanhoCache];
-    int set2_index[tamanhoCache];
     int set2_date[tamanhoCache];
 
     int set3_V[tamanhoCache];
     int set3_tag[tamanhoCache];
-    int set3_index[tamanhoCache];
     int set3_date[tamanhoCache];
 
     int contadorHit = 0 ;
     int contadorMiss = 0 ;
 
+    iniciarIndex(set0_index);
+
     // inicializando o set 0
-    inicializarSet(set0_V,set0_index,set0_tag,set0_date);
+    inicializarSet(set0_V,set0_tag,set0_date);
 
     // inicializando o set 1
-    inicializarSet(set1_V,set1_index,set1_tag,set1_date);
+    inicializarSet(set1_V,set1_tag,set1_date);
 
     // inicializando o set 2
-    inicializarSet(set2_V,set2_index,set2_tag,set2_date);
+    inicializarSet(set2_V,set2_tag,set2_date);
 
     // inicializando o set 3
-    inicializarSet(set3_V,set3_index,set3_tag,set3_date);
+    inicializarSet(set3_V,set3_tag,set3_date);
 
     printf("Memoria cache associativa por conjuntos criada com sucesso \n\n");
 
@@ -142,20 +142,22 @@ int main()
         else if(opcao == 3)
         {
             printf("--------------- Imprimindo Set 1 -----------------\n");
-            imprimirSet(set1_V,set1_index,set1_tag,set1_date);
+            imprimirSet(set1_V,set0_index,set1_tag,set1_date);
 
         }
         else if(opcao == 4)
         {
             printf("--------------- Imprimindo Set 2 -----------------\n");
-            imprimirSet(set2_V,set2_index,set2_tag,set2_date);
+            imprimirSet(set2_V,set0_index,set2_tag,set2_date);
 
         }
         else if(opcao ==5)
         {
             printf("--------------- Imprimindo Set 3----------------- \n");
-            imprimirSet(set3_V,set3_index,set3_tag,set3_date);
-        }else{
+            imprimirSet(set3_V,set0_index,set3_tag,set3_date);
+        }
+        else
+        {
             printf("\n opcao invalida \n");
         }
 
@@ -171,6 +173,14 @@ int main()
     return 0;
 }
 
+void iniciarIndex(int *index)
+{
+    for(int i =0 ; i < 256; i++)
+    {
+        index[i] = i;
+    }
+}
+
 
 void menu()
 {
@@ -184,12 +194,11 @@ void menu()
 
 }
 
-void inicializarSet(int *V, int *Index, int *Tag, int *Date)
+void inicializarSet(int *V,  int *Tag, int *Date)
 {
 
     for(int i = 0 ; i <tamanhoCache; i++)
     {
-        Index[i] = i;
         Tag[i] = rand() % 750;
         V[i] = 1 ;
         Date[i] = rand() % 1000;
