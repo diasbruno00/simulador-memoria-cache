@@ -18,9 +18,10 @@ int main()
     int Index ;
     int opcao = 0 ;
 
+    int arrayIndex[tamanhoCache];
+
     int set0_V[tamanhoCache];
     int set0_tag[tamanhoCache];
-    int set0_index[tamanhoCache];
     int set0_date[tamanhoCache];
 
     int set1_V[tamanhoCache];
@@ -38,7 +39,7 @@ int main()
     int contadorHit = 0 ;
     int contadorMiss = 0 ;
 
-    iniciarIndex(set0_index);
+    iniciarIndex(arrayIndex);
 
     // inicializando o set 0
     inicializarSet(set0_V,set0_tag,set0_date);
@@ -65,7 +66,7 @@ int main()
             printf("\n");
             printf("Digite o index para procurar na cache: ");
             scanf("%d",&Index);
-            int encontrou = buscarPorIndex(Index,set0_index);
+            int encontrou = buscarPorIndex(Index,arrayIndex);
             if(encontrou == 1)
             {
                 printf("Digite o tag para procurar na cache: ");
@@ -137,24 +138,24 @@ int main()
         else if(opcao == 2)
         {
             printf("--------------- Imprimindo Set 0 ----------------- \n");
-            imprimirSet(set0_V,set0_index,set0_tag,set0_date);
+            imprimirSet(set0_V,arrayIndex,set0_tag,set0_date);
         }
         else if(opcao == 3)
         {
             printf("--------------- Imprimindo Set 1 -----------------\n");
-            imprimirSet(set1_V,set0_index,set1_tag,set1_date);
+            imprimirSet(set1_V,arrayIndex,set1_tag,set1_date);
 
         }
         else if(opcao == 4)
         {
             printf("--------------- Imprimindo Set 2 -----------------\n");
-            imprimirSet(set2_V,set0_index,set2_tag,set2_date);
+            imprimirSet(set2_V,arrayIndex,set2_tag,set2_date);
 
         }
         else if(opcao ==5)
         {
             printf("--------------- Imprimindo Set 3----------------- \n");
-            imprimirSet(set3_V,set0_index,set3_tag,set3_date);
+            imprimirSet(set3_V,arrayIndex,set3_tag,set3_date);
         }
         else
         {
